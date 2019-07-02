@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   grimoire.associate = function(models) {
     // associations can be defined here
+    models.grimoire.belongsToMany(models.spell, {through: 'grimoireSpells'});
+    models.grimoire.belongsTo(models.character);
   };
   return grimoire;
 };
