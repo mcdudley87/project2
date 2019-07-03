@@ -29,7 +29,12 @@ router.post('/', function(req, res){
 	});
 });
 
-//show route
+// GET /characters/new ||** IS THIS PATH RIGHT? **||
+router.get('/new', (req, res) => {
+	res.render('character/new');
+});
+
+//SHOW route
 router.get('/:id', function(req, res) {
 	db.character.findOne({
 		where:{id: req.params.id},
@@ -40,8 +45,8 @@ router.get('/:id', function(req, res) {
 });
 
 
-
 //GRIMOIRES ROUTES
+
 // POST grimoire to character   || ** IS THIS RIGHT ** ||
 router.post('/:id/grimoires', function(req, res){
 	db.grimoire.create( {
@@ -53,6 +58,9 @@ router.post('/:id/grimoires', function(req, res){
 	});
 });
 
+router.get('/:id/grimoires/new', (req, res) => {
+	res.render('grimoires/new');
+});
 
 //SHOW route for grimoires || **CHECK ME, BRO!!** ||
 router.get('/:id/grimoires', function(req, res) {

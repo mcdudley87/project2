@@ -8,16 +8,23 @@
 </head>
 <body>
 
-	<p>  <%= spell.url %>   </p>
+	<p><%= spell.name %></p> 
+	<p><%= spell.desc %></p>
+	<p><%= spell.school.name %></p>
+	<p><%= spell.url %> </p> 
+	
+	
+	
+	</p>
 
-	<%# FILL IN AND FORMAL ALL THE OTHER DETAILS YOU WANT %>
+	<%# FILL IN AND FORMAL ALL THE OTHER DETAILS YOU WANT FROM THE MODEL IN POSTMAN AND LOTS OF SQUIDDIES %>
 
 	<form method="POST" action="/characters">
 		<input hidden type="text" name="name" value="<%= spell.name %>">
 		<button class="btn btn-primary" type="submit">Learn Spell</button>
 	</form>
 
-
+<a href="/academy">Return to Academy</a>
 
 
 <p>MAKE SOME LINKS BRUH, SO YOU CAN GET AROUND YO SITE BRUH</p>
