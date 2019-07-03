@@ -1,10 +1,14 @@
 <h1><%= character.name %></h1>
 
-<% characters.forEach(function(character) { %>
-
-<p> character.name </p>
-<p> character.class </p>
-<p> character.level </p>
 
 
-<% }); %>
+<p><%= character.name %> </p>
+<p><%= character.class %> </p>
+<p><%= character.level %> </p>
+<%# For loop for this list %>
+<p><%= character.grimoire%></p>
+
+
+<a href="grimoires/new">Create a New Grimoire</a>
+
+

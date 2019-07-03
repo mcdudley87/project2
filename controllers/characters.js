@@ -9,7 +9,7 @@ const axios = require('axios');
 //CHARACTER ROUTES
 
 //GET characters
-router.get('/', function(rec, res) {
+router.get('/', function(req, res) {
 	db.character.findAll({where: {userId: req.user.id}})
 	.then(function(characters) {
 		res.render('characters/index', {characters});
@@ -25,13 +25,13 @@ router.post('/', function(req, res){
 		level: req.body.level,
 		userId: req.user.id
 	}).then(function() {
-		res.redirect('/characters');
+		res.redirect('characters');
 	});
 });
 
 // GET /characters/new ||** IS THIS PATH RIGHT? **||
 router.get('/new', (req, res) => {
-	res.render('character/new');
+	res.render('characters/new');
 });
 
 //SHOW route
