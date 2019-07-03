@@ -13,21 +13,24 @@ const axios = require('axios');
 //GET spell, render in showspell.ejs to see one
 router.get('/', function(req, res) {
 	db.dndspellbook.findAll()
-	.then(function(whatgoeshere???){
-		res.render('spellbook', {-----});
+	.then(function(dndspellbooks){
+		res.render('grimoire', {dndspellbooks});
 	});
 });
+// .forEeach spellbook in the view page
+
+
 
 // POST spell - receive the nameof a spell and add it to the database. Redirect to Spellbook
 router.post('/', function(req, res){
 	db.dndspellbook.create( {
 		name: req.body.name
 	}).then(function() {
-		res.redirect('/spellbook');
+		res.redirect('/grimoire');
 	});
 });
 
-//GET /spellbook/:id - gets one Spell ID from the DATABASE and uses it to look up details about one spell
+//GET /grimoire/:id - gets one Spell ID from the DATABASE and uses it to look up details about one spell
 router.get('/:id', function(req, res){
 	var id = parseInt(req.params.id);
 	db.dndspellbook.findByPk(id)
