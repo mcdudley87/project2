@@ -5,16 +5,6 @@ const axios = require('axios');
 
 
 
-//ACADEMY - ALLSPELLS ROUTE
-app.get('/academy', function(req, res) {
-	var spellsUrl = 'http://www.dnd5eapi.co/api/spells/';
-	axios.get(spellsUrl)
-	.then(function(apiResponse){
-		var spells = apiResponse.data.results;
-		res.render('academy', {spells});
-	})
-});
-
 
 //CHARACTER ROUTES
 
@@ -69,7 +59,7 @@ router.get('/:id/grimoires', function(req, res) {
 	db.grimoire.findOne({
 		where:{id: req.params.id},
 	}).then(function(grimoire) {
-		res.render('grimoires/show', {grioire})
+		res.render('grimoires/show', {grimoire})
 	});
 });
 
@@ -107,29 +97,29 @@ router.get('/:id/grimoires/:id/spells/:id', function(req, res){
 
 
 //DELETE route for CHARACTER, GRIMOIRE, SPELL
-router.delete('/character/:id', function(req, res) {
-	db.grimoire.destroy({
-		where: {id: parseInt(req.params.id)}
-	}).then(function(----){
-		res.redirect('/--?--');
-	});
-});
+// router.delete('/character/:id', function(req, res) {
+// 	db.grimoire.destroy({
+// 		where: {id: parseInt(req.params.id)}
+// 	}).then(function(----){
+// 		res.redirect('/--?--');
+// 	});
+// });
 
-router.delete('/grimoire/:id', function(req, res) {
-	db.grimoire.destroy({
-		where: {id: parseInt(req.params.id)}
-	}).then(function(----){
-		res.redirect('/--?--');
-	});
-});
+// router.delete('/grimoire/:id', function(req, res) {
+// 	db.grimoire.destroy({
+// 		where: {id: parseInt(req.params.id)}
+// 	}).then(function(----){
+// 		res.redirect('/--?--');
+// 	});
+// });
 
-router.delete('/spell/:id', function(req, res) {
-	db.grimoire.destroy({
-		where: {id: parseInt(req.params.id)}
-	}).then(function(----){
-		res.redirect('/--?--');
-	});
-});
+// router.delete('/spell/:id', function(req, res) {
+// 	db.grimoire.destroy({
+// 		where: {id: parseInt(req.params.id)}
+// 	}).then(function(----){
+// 		res.redirect('/--?--');
+// 	});
+// });
 
 
 module.exports = router;

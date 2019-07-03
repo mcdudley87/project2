@@ -58,9 +58,21 @@ app.use(function(req,res, next){
 });
 
 
+
 app.get('/', function(req, res) {
   res.render('index');
 });
+
+//ACADEMY - ALLSPELLS ROUTE
+app.get('/academy', function(req, res) {
+	var spellsUrl = 'http://www.dnd5eapi.co/api/spells/';
+	axios.get(spellsUrl)
+	.then(function(apiResponse){
+		var spells = apiResponse.data.results;
+		res.render('academy', {spells});
+	})
+});
+
 
 app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile');
