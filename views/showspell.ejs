@@ -1,1 +1,25 @@
 <%# Where you see one spell %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Show One Spell</title>
+</head>
+<body>
+
+	<h2>Spell: <%= spell.name %> </h2>	
+	<%# Render more data here %>
+
+
+
+	<form method='POST' action='/--?--/<%=id%>/?_method=DELETE'>
+		<button type="submit">Forget this Spell...</button>
+	</form>
+
+	<a href="/academy">Back to the Academy</a>
+	<a href="/grimoire">Back to Grimoires</a>
+</body>
+</html>
