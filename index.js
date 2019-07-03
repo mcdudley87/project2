@@ -9,6 +9,7 @@ const passport = require('./config/passportConfig');
 const flash = require('connect-flash');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const helmet = require('helmet');
+const axios = require('axios');
 
 // This is only used by the session store
 const db = require('./models');
