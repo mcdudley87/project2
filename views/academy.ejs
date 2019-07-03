@@ -1,14 +1,23 @@
 <%# Where you see all the spells to learn %>
 <h1>Academy</h1>
 
+<%# This won't work yet but shore do look purty. %>
+<a href="/profile">Back to Profile</a>
 
 <% spells.forEach(function(spell) { %>
-
-<p> <%= spell.name %> </p>
-
+	<% var spellArray = spell.url.split('/'); %>
+	<% var index = spellArray[spellArray.length -1]; %>
+	<p>
+		<a href="/academySpell/<%= index %>">
+			 <%= spell.name %> 
+		</a>		
+	</p>
+			
 
 
 <% }); %>
+
+
 
 
 

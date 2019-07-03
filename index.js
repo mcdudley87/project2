@@ -63,15 +63,32 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-//ACADEMY - ALLSPELLS ROUTE
+//ACADEMY 
+
+//SHOW all spells
 app.get('/academy', function(req, res) {
 	var spellsUrl = 'http://www.dnd5eapi.co/api/spells/';
 	axios.get(spellsUrl)
 	.then(function(apiResponse){
-		var spells = apiResponse.data.results;
+    var spells = apiResponse.data.results;
+    console.log(spells)
 		res.render('academy', {spells});
 	})
 });
+
+//SHOW one spell || ** HEEEELP!!!!! ** ||
+
+app.get('/academySpell/:id', function(req, res){
+  var spellsUrl = 'http://www.dnd5eapi.co/api/spells/' + req.params.id;
+	axios.get(spellsUrl)
+	.then(function(apiResponse){
+    console.log(apiResponse.data)
+    var spell = apiResponse.data;
+    res.render('academySpell', {spell});
+  });
+});
+
+
 
 
 app.get('/profile', isLoggedIn, function(req, res) {
