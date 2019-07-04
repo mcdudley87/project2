@@ -1,0 +1,9 @@
+<p>Grimoires</p>
+
+  <% character.grimoires.forEach(function(grimoire) { %>
+    <div class="well">
+      <h2><a href="/characters/<%= character.id %>/grimoires/<%= grimoire.id %>/spells"> <%= grimoire.title %> </a> </h2>
+      
+    </div>
+  <% }); %>
+

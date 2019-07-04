@@ -59,16 +59,18 @@ router.post('/:id/grimoires', function(req, res){
 });
 
 router.get('/:id/grimoires/new', (req, res) => {
-	res.render('grimoires/new');
+	res.render('grimoires/new', {cid: req.params.id});
 });
 
 //SHOW route for grimoires || **CHECK ME, BRO!!** ||
 router.get('/:id/grimoires', function(req, res) {
-	db.grimoire.findOne({
-		where:{id: req.params.id},
-	}).then(function(grimoire) {
-		res.render('grimoires/show', {grimoire})
-	});
+	db.character.findOne({
+		where: {id: req.params.id},
+		include: [db.grimoire]
+	})
+	.then(function(character){
+		res.render('grimoires/show', {character});
+	})
 });
 
 
@@ -76,13 +78,16 @@ router.get('/:id/grimoires', function(req, res) {
 
 //SPELLS ROUTES
 //GET /grimoire/:id - gets one Spell ID from the DATABASE and uses it to look up details about one spell
-router.get('/:id/grimoires/:id/spells', function(req, res){
-	var id = parseInt(req.params.id);
-	db.grimoire.findByPk(id)
+router.get('/:cid/grimoires/:gid/spells', function(req, res){
+	var gid = parseInt(req.params.gid);
+	db.grimoire.findOne({
+		where: {id: gid},
+		include: [db.spell]
+	})
 	.then(function(grimoire) {
 		axios.get(`http://www.dnd5eapi.co/api/spells/`)
 		.then(function(apiResponse){
-			res.render('showspell', {spells: apiResponse.data, id});
+			res.render('spells/index', {spells: apiResponse.data.results, grimoire});
 		})
 	});
 });
