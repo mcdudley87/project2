@@ -55,6 +55,23 @@ router.delete('/:id', function(req, res) {
   });
 });
 
+//EDIT character route
+router.put('/:id', function(req, res) {
+	var id = parseInt(req.params.id);
+		db.character.update({
+			name: req.body.name,
+			class: req.body.class,
+			level: req.body.level
+		},
+		{ where: {id: req.params.id}
+	}).then(function(){
+		res.redirect("/characters");
+	});
+});
+
+
+
+
 
 
 
