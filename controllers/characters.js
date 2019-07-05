@@ -57,10 +57,7 @@ router.delete('/:id', function(req, res) {
 
 //EDIT character route
 
-// router.get(':id/edit', (req, res) => {
-// 	res.render(`characters/${req.params.id}/edit`);
-// });
-
+//GETit for EDIT
 router.get('/:id/edit', function(req, res) {
 	db.character.findByPk(parseInt(req.params.id))
 		.then(function(character) {
@@ -68,7 +65,7 @@ router.get('/:id/edit', function(req, res) {
 		});
 });
 
-
+//UPDATE DAT SHIT
 router.put('/:id', function(req, res) {
 	var id = parseInt(req.params.id);
 		db.character.update({
@@ -81,36 +78,6 @@ router.put('/:id', function(req, res) {
 		res.redirect("/characters");
 	});
 });
-
-
-
-/*
-
-
-router.put('/:id', function(req, res) {
-	var id = parseInt(req.params.id);
-		db.character.update({
-			name: req.body.name,
-			class: req.body.class,
-			level: req.body.level
-		},
-		{ where: {id: id}
-	}).then(function(characters){
-		res.redirect("/characters");
-	});
-});
-
-
-
-
-
-
-	
-
-
-*/
-
-
 
 
 //GRIMOIRES ROUTES
