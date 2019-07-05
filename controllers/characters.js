@@ -26,7 +26,7 @@ router.post('/', function(req, res){
 		level: req.body.level,
 		userId: req.user.id
 	}).then(function() {
-		res.redirect('characters');
+		res.redirect('/characters');
 	});
 });
 
@@ -56,6 +56,19 @@ router.delete('/:id', function(req, res) {
 });
 
 //EDIT character route
+
+// router.get(':id/edit', (req, res) => {
+// 	res.render(`characters/${req.params.id}/edit`);
+// });
+
+router.get('/:id/edit', function(req, res) {
+	db.character.findByPk(parseInt(req.params.id))
+		.then(function(character) {
+			res.render('characters/edit', {character});
+		});
+});
+
+
 router.put('/:id', function(req, res) {
 	var id = parseInt(req.params.id);
 		db.character.update({
@@ -63,8 +76,26 @@ router.put('/:id', function(req, res) {
 			class: req.body.class,
 			level: req.body.level
 		},
-		{ where: {id: req.params.id}
+		{ where: {id: id}
 	}).then(function(){
+		res.redirect("/characters");
+	});
+});
+
+
+
+/*
+
+
+router.put('/:id', function(req, res) {
+	var id = parseInt(req.params.id);
+		db.character.update({
+			name: req.body.name,
+			class: req.body.class,
+			level: req.body.level
+		},
+		{ where: {id: id}
+	}).then(function(characters){
 		res.redirect("/characters");
 	});
 });
@@ -73,9 +104,6 @@ router.put('/:id', function(req, res) {
 
 
 
-
-
-/*
 
 	
 

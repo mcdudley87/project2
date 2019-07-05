@@ -1,15 +1,15 @@
-<h2>Edit yer Dino Info</h2>
+<h2>Edit Character Info</h2>
 
 <form method="POST" action="/characters/<%=character.id%>/?_method=PUT" >
 	<label for="name">Name</label>
-	<input type="text" name="dinosaurType" value="<%= character.name %>" />
+	<input type="text" name="name" value="<%= character.name %>" />
 
-	<label for="dinosaurName">Class</label>
+	<label for="class">Class</label>
 	<input type="text" name="class" value="<%= character.class %>" />
 
-	<label for="dinosaurName">Level</label>
-	<input type="text" name="level" value="<%= character.level %>" />
+	<label for="level">Level</label>
+	<input type="number" name="level" value="<%= character.level %>" />
 
-	<input type="submit" value="Update My Dino!">
+	<input type="submit" value="Update My Character">
 
 </form>
