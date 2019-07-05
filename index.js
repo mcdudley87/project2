@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const helmet = require('helmet');
 const axios = require('axios');
+const methodOverride = require('method-override');
 
 // This is only used by the session store
 const db = require('./models');
@@ -31,6 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
 app.use(ejsLayouts);
 app.use(helmet());
+app.use(methodOverride('_method'));
 
 //Configures express-session middleware
 app.use(session({

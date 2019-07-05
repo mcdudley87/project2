@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../models'); //double check this path after draft
 const axios = require('axios');
+const methodOverride = require('method-override');
 
 
 
@@ -43,6 +44,28 @@ router.get('/:id', function(req, res) {
 		res.render('characters/show', {character});
 	});
 });
+
+//DELETE character route
+router.delete('/:id', function(req, res) {
+	console.log('DESTROYYYYYYY')
+  db.character.destroy({
+    where: {id: req.params.id}
+  }).then(function(){
+    res.redirect('/characters');
+  });
+});
+
+
+
+
+/*
+
+	
+
+
+*/
+
+
 
 
 //GRIMOIRES ROUTES
@@ -104,16 +127,7 @@ router.get('/:id/grimoires/:id/spells/:id', function(req, res){
 	});
 });
 
-//delete character route
-router.delete('/characters/:id', function(req, res) {
-	console.log('DESTROYYYYYYY')
-	var cid = parseInt(req.params.cid);
-  db.character.destroy({
-    where: {id: cid}
-  }).then(function(character){
-    res.redirect('/characters/' + req.params.id);
-  });
-})
+
 
 
 //  ('/characters/' + req.params.id + '/grimoires')
