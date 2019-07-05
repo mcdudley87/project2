@@ -15,4 +15,10 @@
 
 <a href="/characters/<%= character.id %>/grimoires/">Grimoires</a> 
 
+||
 
+<form method='POST' action='/characters/<%=character.id%>/?_method=DELETE'> 
+
+	<button type="submit">Delete this Character</button>
+
+</form>

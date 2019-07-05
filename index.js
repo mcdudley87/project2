@@ -76,7 +76,7 @@ app.get('/academy', function(req, res) {
 	})
 });
 
-//SHOW one spell || ** HEEEELP!!!!! ** ||
+//SHOW one spell 
 
 app.get('/academySpell/:id', function(req, res){
   var spellsUrl = 'http://www.dnd5eapi.co/api/spells/' + req.params.id;

@@ -104,10 +104,19 @@ router.get('/:id/grimoires/:id/spells/:id', function(req, res){
 	});
 });
 
+//delete character route
+router.delete('/characters/:id', function(req, res) {
+	console.log('DESTROYYYYYYY')
+	var cid = parseInt(req.params.cid);
+  db.character.destroy({
+    where: {id: cid}
+  }).then(function(character){
+    res.redirect('/characters/' + req.params.id);
+  });
+})
 
 
-
-
+//  ('/characters/' + req.params.id + '/grimoires')
 
 //DELETE route for CHARACTER, GRIMOIRE, SPELL
 // router.delete('/character/:id', function(req, res) {
