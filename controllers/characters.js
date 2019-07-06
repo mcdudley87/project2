@@ -47,7 +47,6 @@ router.get('/:id', function(req, res) {
 
 //DELETE character route
 router.delete('/:id', function(req, res) {
-	console.log('DESTROYYYYYYY')
   db.character.destroy({
     where: {id: req.params.id}
   }).then(function(){
@@ -107,7 +106,6 @@ router.get('/:id/grimoires', function(req, res) {
 		res.render('grimoires/show', {character});
 	})
 });
-
 
 
 
