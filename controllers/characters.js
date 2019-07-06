@@ -30,7 +30,7 @@ router.post('/', function(req, res){
 	});
 });
 
-// GET /characters/new ||** IS THIS PATH RIGHT? **||
+// GET /characters/new 
 router.get('/new', (req, res) => {
 	res.render('characters/new');
 });
@@ -82,7 +82,7 @@ router.put('/:id', function(req, res) {
 
 //GRIMOIRES ROUTES
 
-// POST grimoire to character   || ** IS THIS RIGHT ** ||
+// POST grimoire to character   
 router.post('/:id/grimoires', function(req, res){
 	db.grimoire.create( {
 		title: req.body.title,
@@ -97,7 +97,7 @@ router.get('/:id/grimoires/new', (req, res) => {
 	res.render('grimoires/new', {cid: req.params.id});
 });
 
-//SHOW route for grimoires || **CHECK ME, BRO!!** ||
+//SHOW route for grimoires 
 router.get('/:id/grimoires', function(req, res) {
 	db.character.findOne({
 		where: {id: req.params.id},
@@ -142,32 +142,7 @@ router.get('/:id/grimoires/:id/spells/:id', function(req, res){
 
 
 
-//  ('/characters/' + req.params.id + '/grimoires')
 
-//DELETE route for CHARACTER, GRIMOIRE, SPELL
-// router.delete('/character/:id', function(req, res) {
-// 	db.grimoire.destroy({
-// 		where: {id: parseInt(req.params.id)}
-// 	}).then(function(----){
-// 		res.redirect('/--?--');
-// 	});
-// });
-
-// router.delete('/grimoire/:id', function(req, res) {
-// 	db.grimoire.destroy({
-// 		where: {id: parseInt(req.params.id)}
-// 	}).then(function(----){
-// 		res.redirect('/--?--');
-// 	});
-// });
-
-// router.delete('/spell/:id', function(req, res) {
-// 	db.grimoire.destroy({
-// 		where: {id: parseInt(req.params.id)}
-// 	}).then(function(----){
-// 		res.redirect('/--?--');
-// 	});
-// });
 
 
 module.exports = router;
