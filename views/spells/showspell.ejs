@@ -1,25 +1,37 @@
 <%# Where you see one spell %>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Show One Spell</title>
+	<title>Show One Spell and Details</title>
 </head>
 <body>
 
-	<h2>Spell: <%= spell.name %> </h2>	
-	<%# Render more data here %>
+	<p><%= spell.name %></p> 
+	<p><%= spell.desc %></p>
+	<p><%= spell.school.name %></p>
+	<p><%= spell.url %> </p> 
+	
+	
 
 
+	<%# FILL IN AND FORMAL ALL THE OTHER DETAILS YOU WANT FROM THE MODEL IN POSTMAN AND LOTS OF SQUIDDIES %>
 
-	<form method='POST' action='/character/<%=id%>/?_method=DELETE'>
-		<button type="submit">Forget this Spell...</button>
+
+	<%# THIS NEEDS FIXING IT POSTS TO CHARACTER TABLE %>
+	<form method="POST" action="/characters/<%=cid%>/grimoires/<%=gid%>/spells/<%=sid%>">
+		<input hidden type="text" name="name" value="<%= spell.name %>">
+		<button class="btn btn-primary" type="submit">Learn Spell</button>
 	</form>
-
-	<a href="/academy">Back to the Academy</a>
-	<a href="/grimoire">Back to Grimoires</a>
+	<a href="/academy">Back</a>
+	<%# LEARN SPELL ADDS TO USERS %>	
 </body>
 </html>
+
+<%# DISABLE LEARN BUTTON OR MAKE ALERT TO REMIND TO SELECT GRIMOIRE %>
+

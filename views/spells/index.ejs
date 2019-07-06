@@ -1,4 +1,4 @@
-<%# THIS IS WHERE YOU SEE SPELLS IN YOUR GRIMOIRE %>
+<%# THIS IS WHERE YOU SEE SPELLS IN YOUR GRIMOIRE FOR ADDING%>
 
 
 <h2>Spells in this book:</h2>
@@ -17,8 +17,9 @@
 	<% var spellArray = spell.url.split('/'); %>
 	<% var index = spellArray[spellArray.length -1]; %>
 	<p>
-		<a href="/academySpell/<%= index %>">
-			 <%= spell.name %> 
+		<a href="characters/<%=cid%>/grimoires/<%=grimoire.id%>/spells/<%=index%>">why</a>
+		<a href="characters/<%=cid%>/grimoires/<%=grimoire.id %>/spells/<%=index%>">
+			<%= spell.name %> 
 		</a>		
 	</p>
 			

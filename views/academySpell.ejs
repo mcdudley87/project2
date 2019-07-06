@@ -14,37 +14,19 @@
 	<p><%= spell.url %> </p> 
 	
 	
-	
-	</p>
+
 
 	<%# FILL IN AND FORMAL ALL THE OTHER DETAILS YOU WANT FROM THE MODEL IN POSTMAN AND LOTS OF SQUIDDIES %>
 
 
 	<%# THIS NEEDS FIXING IT POSTS TO CHARACTER TABLE %>
-	<form method="POST" action="/characters/">
+	<form method="POST" action="/characters/spell">
 		<input hidden type="text" name="name" value="<%= spell.name %>">
 		<button class="btn btn-primary" type="submit">Learn Spell</button>
 	</form>
-	
+	<a href="/academy">Back</a>
 
-
-
-
-
-	<%# LEARN SPELL ADDS TO USERS %>
-
-<a href="/academy">Return to Academy</a> 
-||
-<a href="/characters">Return to Characters</a>
-
-
-
-
-<p>MAKE SOME LINKS BRUH, SO YOU CAN GET AROUND YO SITE BRUH</p>
-
-
-
-	
+	<%# LEARN SPELL ADDS TO USERS %>	
 </body>
 </html>
 

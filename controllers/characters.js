@@ -5,8 +5,6 @@ const axios = require('axios');
 const methodOverride = require('method-override');
 
 
-
-
 //CHARACTER ROUTES
 
 //GET characters
@@ -113,6 +111,8 @@ router.get('/:id/grimoires', function(req, res) {
 //GET /grimoire/:id - gets one Spell ID from the DATABASE and uses it to look up details about one spell
 router.get('/:cid/grimoires/:gid/spells', function(req, res){
 	var gid = parseInt(req.params.gid);
+	var cid = parseInt(req.params.cid);
+
 	db.grimoire.findOne({
 		where: {id: gid},
 		include: [db.spell]
@@ -120,24 +120,52 @@ router.get('/:cid/grimoires/:gid/spells', function(req, res){
 	.then(function(grimoire) {
 		axios.get(`http://www.dnd5eapi.co/api/spells/`)
 		.then(function(apiResponse){
-			res.render('spells/index', {spells: apiResponse.data.results, grimoire});
+			res.render('spells/index', {
+																		spells: apiResponse.data.results, 
+																		grimoire,
+																		cid
+																	});
 		})
 	});
 });
 
-//SHOW spell
-router.get('/:id/grimoires/:id/spells/:id', function(req, res){
-	var id = parseInt(req.params.id);
-	db.grimoire.findByPk(id)
-	.then(function(grimoire) {
-		axios.get(`http://www.dnd5eapi.co/api/spells/`)
-		.then(function(apiResponse){
-			res.render('showspell', {spells: apiResponse.data, id});
-		})
-	});
+//SHOW spell 
+router.get('/:cid/grimoires/:gid/spells/:id', function(req, res){
+	var spellsUrl = 'http://www.dnd5eapi.co/api/spells/' + req.params.id;
+	var cid = parseInt(req.params.cid);
+	var gid = parseInt(req.params.gid);
+
+	axios.get(spellsUrl)
+	.then(function(apiResponse){
+    console.log(apiResponse.data)
+    var spell = apiResponse.data;
+    res.render('spells/showspell',  {
+																	spell, 
+																	cid,
+																	gid
+																});
+  });
 });
 
 
+//working POST route for SPELLS || THIS NEEDS SOME HELP ||
+router.post('/:cid/grimoires/:gid/spells/:sid', function(req, res){
+	// TODO: Capture notes during form submission. 
+	notes = "";
+	
+	db.spell.findOrCreate( {
+		name: req.body.name,
+		url: req.body.url
+	});
+	
+	db.grimorespells.findOrCreate( {
+		spellId: req.params.id,
+		grimoireId: req.params.gid,
+		notes: notes
+	} ).then(function() {
+		res.redirect('/characters/'+ req.params.cid +'/grimoires/'+ req.params.gid +'/spells'); //fix this path
+	});
+});
 
 
 
