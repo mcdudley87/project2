@@ -139,18 +139,34 @@ router.get('/:cid/grimoires/:gid/spells/:id', function(req, res){
 	.then(function(apiResponse){
     console.log(apiResponse.data)
     var spell = apiResponse.data;
-    res.render('spells/showspell',  {
-																	spell, 
-																	cid,
-																	gid
-																});
+		res.render('spells/showspell', {spell, cid, gid, sid: req.params.id});
   });
 });
 
 
 //working POST route for SPELLS || THIS NEEDS SOME HELP ||
 router.post('/:cid/grimoires/:gid/spells/:sid', function(req, res){
-	// TODO: Capture notes during form submission. 
+	db.grimoire.findByPk(req.params.gid)
+	.then(function(grimoire){
+		db.spell.findOrCreate({
+			where:{ name: req.body.name,
+							url: req.body.url
+			}
+		}).spread(function (created, spell){
+			grimoire.addSpell(spell)
+			.then(function(data){
+				res.redirect('/characters/'+ req.params.cid +'/grimoires/'+ req.params.gid)
+			})
+		})
+	})
+	
+	
+	
+	
+	
+	
+	
+	/*
 	notes = "";
 	
 	db.spell.findOrCreate( {
@@ -167,7 +183,7 @@ router.post('/:cid/grimoires/:gid/spells/:sid', function(req, res){
 	});
 });
 
-
+*/
 
 
 
