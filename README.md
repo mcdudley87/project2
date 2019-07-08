@@ -38,12 +38,16 @@ To create a new grimoire:
 
 # Production Notes:
 
-Technologies Use:
+Technologies Used:
   * HTML
   * CSS
   * JavaScript
   * NodeJS
   * Express
+  * EJS
   * SQL
+  * http://www.dnd5eapi.co/
+
+
 
 

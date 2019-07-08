@@ -12,20 +12,28 @@
 </head>
 <body>
 
-	<p><%= spell.name %></p> 
+	<p>Name: <%= spell.name %></p> 
 	<p><%= spell.desc %></p>
-	<p><%= spell.school.name %></p>
-	<p><%= spell.url %> </p> 
+	<p>School: <%= spell.school.name %></p>
+	<p>Classes: </p>
+		<ul>
+		<% spell.classes.forEach( function(cls) { %>
+			<li><%= cls.name %> </li>
+		<% }); %> 	
+		</ul>
+	<p>Components: <%= spell.components %></p>
+	<p>Range: <%= spell.range %> </p> 
+	<p>Ritual: <%= spell.ritual %> </p> 
+	<p>Duration: <%= spell.duration %> </p> 
+	<p>Players Handbook Page: <%= spell.page %> </p> 
+	<p> <%= spell.url%> </p> 
 	
-	
 
 
-	<%# FILL IN AND FORMAL ALL THE OTHER DETAILS YOU WANT FROM THE MODEL IN POSTMAN AND LOTS OF SQUIDDIES %>
-
-
-	<%# THIS NEEDS FIXING IT POSTS TO CHARACTER TABLE %>
+	<%# THIS NEEDS FIXING%>
 	<form method="POST" action="/characters/<%=cid%>/grimoires/<%=gid%>/spells/<%=sid%>">
 		<input hidden type="text" name="name" value="<%= spell.name %>">
+		<input hidden type="text" name="url" value="<%= spell.url %>">
 		<button class="btn btn-primary" type="submit">Learn Spell</button>
 	</form>
 	<a href="/academy">Back</a>

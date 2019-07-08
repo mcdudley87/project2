@@ -120,11 +120,7 @@ router.get('/:cid/grimoires/:gid/spells', function(req, res){
 	.then(function(grimoire) {
 		axios.get(`http://www.dnd5eapi.co/api/spells/`)
 		.then(function(apiResponse){
-			res.render('spells/index', {
-																		spells: apiResponse.data.results, 
-																		grimoire,
-																		cid
-																	});
+			res.render('spells/index', {spells: apiResponse.data.results, grimoire, cid});
 		})
 	});
 });
@@ -143,46 +139,23 @@ router.get('/:cid/grimoires/:gid/spells/:id', function(req, res){
   });
 });
 
-
-//working POST route for SPELLS || THIS NEEDS SOME HELP ||
-// router.post('/:cid/grimoires/:gid/spells/:sid', function(req, res){
-// 	db.grimoire.findByPk(req.params.gid)
-// 	.then(function(grimoire){
-// 		db.spell.findOrCreate({
-// 			where:{ name: req.body.name,
-// 							url: req.body.url
-// 			}
-// 		}).spread(function (created, spell){
-// 			grimoire.addSpell(spell)
-// 			.then(function(data){
-// 				res.redirect('/characters/'+ req.params.cid +'/grimoires/'+ req.params.gid)
-// 			});
-// 		});
-// 	});
-	
-	
-	
-	
-	/*
-	notes = "";
-	
-	db.spell.findOrCreate( {
-		name: req.body.name,
-		url: req.body.url
+// working POST route for SPELLS || THIS NEEDS SOME HELP ||
+router.post('/:cid/grimoires/:gid/spells/:sid', function(req, res){
+	db.grimoire.findByPk(req.params.gid)
+	.then(function(grimoire){
+		db.spell.findOrCreate({
+			where:{ name: req.body.name,
+							url: req.body.url
+			}
+		}).spread(function (spell, created){
+			console.log('❌❌❌❌  ', created, spell.id, grimoire.id)
+			grimoire.addSpell(spell)
+			.then(function(data){ 
+				res.redirect('/characters/'+ req.params.cid +'/grimoires/'+ req.params.gid +'/spells')
+			})
+		})
 	});
+})
 	
-	db.grimorespells.findOrCreate( {
-		spellId: req.params.id,
-		grimoireId: req.params.gid,
-		notes: notes
-	} ).then(function() {
-		res.redirect('/characters/'+ req.params.cid +'/grimoires/'+ req.params.gid +'/spells'); //fix this path
-	});
-});
-
-*/
-
-
-
+	
 module.exports = router;
-
