@@ -1,13 +1,18 @@
 /* PROFILE */
 /*
+font-family: 'Seaweed Script', cursive;
+font-family: 'Cantarell', sans-serif;
+font-family: 'Nova Square', cursive;
+font-family: 'Nova Slim', cursive;
 font-family: 'Nova Script', cursive;
-font-family: 'Seaweed Script', cursive; 
 */
 
 html, body {
 	background-color: antiquewhite;
-	font-family: 'Amatic SC', cursive;
-	color: white;
+	font-family: 'Nova Square', cursive;
+	font-size: 20px;
+	text-shadow: 1.5px 1.5px rgb(78, 74, 74);
+	color: goldenrod;
 	background-image: url(/assets/bgdice.jpg); 
 	background-position: center;
 	background-repeat: no-repeat;
@@ -15,6 +20,7 @@ html, body {
 	background-size: 100%;
 	opacity: 1;
 };
+
 
 
 .navbar {
@@ -30,6 +36,7 @@ html, body {
 
 
 /* SPELLS */
+
 
 
 

@@ -4,7 +4,7 @@
 <h2>Spells in this book:</h2>
 
 <% grimoire.spells.forEach(function(spell) { %>
-	<h4><%= spell.name %></h4>
+	<h4><a href='<%= spell.url %>'><%= spell.name %></a></h4>
 <% }); %>
 
 
@@ -14,12 +14,13 @@
 <% spells.forEach(function(spell) { %>
 	<% var spellArray = spell.url.split('/'); %>
 	<% var index = spellArray[spellArray.length -1]; %>
-	<p>
-		<a href="/characters/<%=cid%>/grimoires/<%=grimoire.id%>/spells/<%=index%>">
-			<%= spell.name %> 
-		</a>		
-	</p>
-			
+	<div id="splist">
+		<p>
+			<a href="/characters/<%=cid%>/grimoires/<%=grimoire.id%>/spells/<%=index%>">
+				<%= spell.name %> 
+			</a>		
+		</p>
+	</div>		
 <% }); %>
 
 
