@@ -145,23 +145,20 @@ router.get('/:cid/grimoires/:gid/spells/:id', function(req, res){
 
 
 //working POST route for SPELLS || THIS NEEDS SOME HELP ||
-router.post('/:cid/grimoires/:gid/spells/:sid', function(req, res){
-	db.grimoire.findByPk(req.params.gid)
-	.then(function(grimoire){
-		db.spell.findOrCreate({
-			where:{ name: req.body.name,
-							url: req.body.url
-			}
-		}).spread(function (created, spell){
-			grimoire.addSpell(spell)
-			.then(function(data){
-				res.redirect('/characters/'+ req.params.cid +'/grimoires/'+ req.params.gid)
-			})
-		})
-	})
-	
-	
-	
+// router.post('/:cid/grimoires/:gid/spells/:sid', function(req, res){
+// 	db.grimoire.findByPk(req.params.gid)
+// 	.then(function(grimoire){
+// 		db.spell.findOrCreate({
+// 			where:{ name: req.body.name,
+// 							url: req.body.url
+// 			}
+// 		}).spread(function (created, spell){
+// 			grimoire.addSpell(spell)
+// 			.then(function(data){
+// 				res.redirect('/characters/'+ req.params.cid +'/grimoires/'+ req.params.gid)
+// 			});
+// 		});
+// 	});
 	
 	
 	
