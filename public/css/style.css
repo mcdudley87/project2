@@ -1,9 +1,36 @@
 /* PROFILE */
+/*
+font-family: 'Nova Script', cursive;
+font-family: 'Seaweed Script', cursive; 
+*/
 
-#signup {
-	background: crimson;
-}
+html, body {
+	background-color: antiquewhite;
+	font-family: 'Nova Script', cursive; 
+	color: whitesmoke;
+	background-image: url(/assets/bgd20.jpg); 
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100%;
+	opacity: 1;
+};
 
+
+
+
+
+.navbar {
+	color: maroon;
+};
+
+
+
+/* CHARACTER */
+
+#char-show {
+	background-color: antiquewhite;
+};
 
 
 
