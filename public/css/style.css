@@ -6,9 +6,9 @@ font-family: 'Seaweed Script', cursive;
 
 html, body {
 	background-color: antiquewhite;
-	font-family: 'Nova Script', cursive; 
-	color: whitesmoke;
-	background-image: url(/assets/bgd20.jpg); 
+	font-family: 'Amatic SC', cursive;
+	color: white;
+	background-image: url(/assets/bgdice.jpg); 
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -17,14 +17,9 @@ html, body {
 };
 
 
-
-
-
 .navbar {
 	color: maroon;
 };
-
-
 
 /* CHARACTER */
 
