@@ -43,8 +43,8 @@ router.get('/login', function(req, res) {
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/auth/login',
-  successFlash: 'You have logged in. Heh, log...',
-  failureFlash: 'Invalid username/password. Get it a wheelchair.'
+  successFlash: 'You have logged in.',
+  failureFlash: 'Invalid username/password.'
 }));
 
 //GET /auth/logout - deletes the session
